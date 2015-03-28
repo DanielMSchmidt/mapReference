@@ -36,5 +36,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Can I haz location?</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Can I haz location?</string>
 </dict>
 </plist>

@@ -10,39 +10,41 @@ var {
   StyleSheet,
   Text,
   View,
+  MapView,
 } = React;
 
 var MapReference = React.createClass({
+  getInitialState: function() {
+    return {
+      region: {
+        latitude: '37.33072',
+        longitude: '-122.029674',
+        latitudeDelta: '1',
+        longitudeDelta: '1'
+      },
+      showUser: true
+    };
+  },
   render: function() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js{'\n'}
-          Press Cmd+R to reload
-        </Text>
+        <MapView
+          style={styles.map}
+          showsUserLocation={this.state.showUser}
+          region={this.state.region}
+          minDelta={this.state.region.latitudeDelta}
+        />
       </View>
     );
   }
 });
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+  map: {
+    height: 500,
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
+    borderWidth: 1,
+    borderColor: '#000000',
   },
 });
 
