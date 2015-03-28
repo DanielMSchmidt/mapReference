@@ -13,16 +13,34 @@ var {
   MapView,
 } = React;
 
+var region = {
+  latitude: 37.33072,
+  longitude: -122.029674,
+  latitudeDelta: 1,
+  longitudeDelta: 1
+}, generateRandomPins = function(region, count) {
+  var count = count || 5,
+      arr = [],
+      pin;
+
+  for (var i = count - 1; i >= 0; i--) {
+    pin = {
+      title: 'Pin number ' + i,
+      latitude: region.latitude + (region.latitudeDelta * Math.random() * 2 - region.latitudeDelta),
+      longitude: region.longitude + (region.longitudeDelta * Math.random() * 2 - region.longitudeDelta)
+    };
+
+    arr.push(pin);
+  };
+  return arr;
+};
+
 var MapReference = React.createClass({
   getInitialState: function() {
     return {
-      region: {
-        latitude: '37.33072',
-        longitude: '-122.029674',
-        latitudeDelta: '1',
-        longitudeDelta: '1'
-      },
-      showUser: true
+      region,
+      showUser: true,
+      pins: generateRandomPins(region)
     };
   },
   render: function() {
@@ -33,6 +51,7 @@ var MapReference = React.createClass({
           showsUserLocation={this.state.showUser}
           region={this.state.region}
           minDelta={this.state.region.latitudeDelta}
+          pins={this.state.pins}
         />
       </View>
     );
