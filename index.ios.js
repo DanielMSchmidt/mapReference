@@ -16,8 +16,8 @@ var {
 var region = {
   latitude: 37.33072,
   longitude: -122.029674,
-  latitudeDelta: 1,
-  longitudeDelta: 1
+  latitudeDelta: 0.001,
+  longitudeDelta: 0.001
 }, generateRandomPins = function(region, count) {
   var count = count || 5,
       arr = [],
@@ -50,7 +50,6 @@ var MapReference = React.createClass({
           style={styles.map}
           showsUserLocation={this.state.showUser}
           region={this.state.region}
-          minDelta={this.state.region.latitudeDelta}
           pins={this.state.pins}
         />
       </View>
