@@ -26,6 +26,7 @@ var region = {
   for (var i = count - 1; i >= 0; i--) {
     pin = {
       title: 'Pin number ' + i,
+      subtitle: 'My cool subtitle',
       latitude: region.latitude + (region.latitudeDelta * Math.random() * 2 - region.latitudeDelta),
       longitude: region.longitude + (region.longitudeDelta * Math.random() * 2 - region.longitudeDelta)
     };
@@ -39,7 +40,6 @@ var MapReference = React.createClass({
   getInitialState: function() {
     return {
       region,
-      showUser: true,
       pins: generateRandomPins(region)
     };
   },
@@ -48,9 +48,11 @@ var MapReference = React.createClass({
       <View style={styles.container}>
         <MapView
           style={styles.map}
-          showsUserLocation={this.state.showUser}
+          showsUserLocation={false}
           region={this.state.region}
           pins={this.state.pins}
+          scrollEnabled={true}
+          pitchEnabled={true}
         />
       </View>
     );
